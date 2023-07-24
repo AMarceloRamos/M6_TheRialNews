@@ -29,9 +29,48 @@ Visita el sitio en tu navegador y disfruta de las noticias satíricas más diver
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](link-to-license-file) para más detalles.
 
+## Actualizaciones / Cambios Recientes
+
+- Agregado Bootstrap para estilos y componentes en la aplicación.
+- Modificado el nombre del archivo `application.css` a `application.scss` y agregado el siguiente contenido:
+
+@import "bootstrap";
+
+- Añadidos los paquetes `jquery-rails` y `popper` para trabajar con selectores y funcionalidades en JavaScript.
+
+### En `application.js`
+
+Agregado el siguiente contenido al archivo `application.js`:
+
+import "popper"
+import "bootstrap"
 
 
-* Ruby version
+### En `app/assets/config/manifest.js`
+
+Agregado el siguiente contenido:
+
+//= link bootstrap.min.js
+
+### En la carpeta `config/importmap.rb`
+
+Agregado el siguiente contenido:
+
+pin "popper", to: 'popper.js', preload: true
+pin "bootstrap", to: 'bootstrap.min.js', preload: true
+
+
+### En `config/initializers/asset.rb`
+
+Agregado el siguiente contenido:
+
+Rails.application.config.assets.precompile += %w(application.scss bootstrap.min.js popper.js)
+
+
+
+
+
+* Ruby version : ruby 3.1.1p18 (2022-02-18 revision 53f5fc4236) [x86_64-linux]
 
 * System dependencies
 
