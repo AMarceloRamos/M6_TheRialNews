@@ -1,0 +1,65 @@
+<!-- Barra de navegación con un fondo claro -->
+<nav class="navbar navbar-expand-lg bg-light">
+
+  <!-- Contenedor para albergar los elementos de navegación -->
+  <div class="container-fluid">
+
+    <!-- Enlace de la marca que lleva a la página raíz del sitio web -->
+    <a class="navbar-brand" href="#">Navbar</a>
+
+    <!-- Botón para alternar el menú de navegación responsive y colapsable -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span> <!-- Icono del botón -->
+    </button>
+
+    <!-- Elementos del menú de navegación colapsable -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <!-- Lista de elementos del menú alineados a la derecha -->
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!-- Mostrar un saludo personalizado según la autenticación del usuario -->
+        <!-- Elemento de menú desplegable -->
+        <li class="nav-item dropdown">
+          <!-- Enlace del menú desplegable -->
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Mostrar un saludo personalizado según la autenticación del usuario -->
+            <% if user_signed_in? %>
+                Hola <%= current_user.email %>
+            <% else %>
+                Dale regístrate o conéctate
+            <% end %>
+          </a>
+          <!-- Contenido del menú desplegable -->
+          <ul class="dropdown-menu">
+            <!-- Opciones del menú desplegable dependiendo de si el usuario ha iniciado sesión -->
+            <% if user_signed_in? %>
+              <li>
+                <!-- Botón para cerrar sesión con método 'delete' -->
+                <%= button_to 'Cerrar sesión', destroy_user_session_path, class: 'dropdown-item', method: :delete %>
+              </li>
+            <% else %>
+              <li>
+                <!-- Enlace para iniciar sesión -->
+                <%= link_to 'Iniciar sesión', new_user_session_path, class: 'dropdown-item' %>
+              </li>
+              <li>
+                <hr class="dropdown-divider"> <!-- Línea divisora -->
+              </li>
+              <li>
+                <!-- Enlace para registrarse -->
+                <%= link_to 'Registro', new_user_registration_path, class: 'dropdown-item' %>
+              </li>
+            <% end %>
+
+          </ul>
+
+        </li> <!-- Fin del elemento de menú desplegable -->
+
+      </ul> <!-- Fin de la lista de elementos del menú alineados a la derecha -->
+
+    </div> <!-- Fin de los elementos del menú de navegación colapsable -->
+
+  </div> <!-- Fin del contenedor -->
+
+</nav> <!-- Fin de la barra de navegación -->
