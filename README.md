@@ -59,13 +59,30 @@ Agregado el siguiente contenido:
 pin "popper", to: 'popper.js', preload: true
 pin "bootstrap", to: 'bootstrap.min.js', preload: true
 
-
 ### En `config/initializers/asset.rb`
 
 Agregado el siguiente contenido:
 
 Rails.application.config.assets.precompile += %w(application.scss bootstrap.min.js popper.js)
 
+- Agrege la funcionalidad de Inicio y Cierre de Sesión para los usuarios.
+- Implemente un Navbar desde Bootstrap para una mejor experiencia de navegación.
+
+### Ruta Root y Controlador Nuevo
+
+Creamos una nueva ruta raíz y un controlador llamado "home" con la acción "index". Esto nos permitirá tener una página de inicio personalizada para el sitio.
+
+### Formatos Navegacionales de Devise
+
+Modificamos los formatos navegacionales de Devise en 'config/initializers/devise.rb', descomentando la línea 266. Esta configuración nos permite manejar de manera adecuada las respuestas en distintos formatos, incluyendo HTML y Turbo Stream.
+
+### Navbar con Opciones de Sesión
+
+Agregamos un Navbar utilizando Bootstrap, que incluye opciones para 'Iniciar sesión', 'Registrarse' y 'Cerrar sesión'. Además, las opciones se muestran o ocultan según el estado del usuario: si está conectado, solo se muestra 'Cerrar sesión'; si no está conectado, se muestran 'Iniciar sesión' y 'Registrarse'.
+
+### Saludo al Usuario Conectado
+
+En el Navbar, ahora mostramos un saludo personalizado al usuario si está conectado, y lo invitamos a registrarse o conectarse si no lo está.
 
 
 
